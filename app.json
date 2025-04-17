@@ -28,7 +28,7 @@
         }
       ],
       "formation": {
-        "web": {
+        "wroker": {
           "quantity": 1,
           "size": "free"
         }
