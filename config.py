@@ -1,0 +1,5 @@
+
+API_ID = 26169983  # Replace with your API ID
+API_HASH = "c69f585ca5aee54e14c04cb02607d679"  # Replace with your API Hash
+BOT_TOKEN = "7700343108:AAG6E7jCaY3ERdkKb1goy8a21hiIZYrLEXo"  # Replace with your bot token
+SESSION_STRING = "BQGPUn8Abj13Z5dPFIq__Aopjv6mJAkYtRS0ds99n3xojkLQyGKradOsEGXvoxlPc5ecM7r49JIgY6uCeCWgoeuEwnByl_DDfGiQy2YKZdPCNFy5c0wz4UAlB0HdYm1bEoIZdwa7yd5wR33YlXlXwhGNWFkYGvshqsAVlps4ccWZTVwEAFiWFtXNjP7sy-1ugVNxJlgh2U3gfd6uUjRQ2VJ-xZxjwuhfBcO0TUwGj7x2m_xU-lr-_gftpAnDkVXx3_sUKVxwojp0iOXrOQT75r3f68Uc4JdzPxeSBKwos7ZpFRPTASkhlblcsKTkz5Nvg6lNA0ad7Tuh-v-VqHapdBoJzql1YwAAAAHG7fs5AA"  # Replace with your Pyrogram user session string

@@ -1,0 +1,40 @@
+{
+      "name": "Telegram Music Bot",
+      "description": "A bot to play music in Telegram voice chats",
+      "repository": "https://github.com/yourusername/your-repository",  // Replace with your actual GitHub repo URL
+      "logo": "https://example.com/logo.png",  // Optional, replace with a valid image URL
+      "keywords": ["telegram", "music", "bot", "voice-chat", "pytgcalls"],
+      "env": {
+        "API_ID": {
+          "description": "Your Telegram API ID",
+          "required": true
+        },
+        "API_HASH": {
+          "description": "Your Telegram API Hash",
+          "required": true
+        },
+        "BOT_TOKEN": {
+          "description": "Your Telegram Bot Token",
+          "required": true
+        },
+        "SESSION_STRING": {
+          "description": "Your user session string for Pyrogram",
+          "required": true
+        }
+      },
+      "buildpacks": [
+        {
+          "url": "heroku/python"
+        }
+      ],
+      "formation": {
+        "web": {
+          "quantity": 1,
+          "size": "free"
+        }
+      },
+      "scripts": {
+        "postdeploy": "pip install -r requirements.txt"
+      }
+    }
+    

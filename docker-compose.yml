@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  musicbot:
+    build: .
+    container_name: musicbot
+    environment:
+      - API_ID=${API_ID}
+      - API_HASH=${API_HASH}
+      - BOT_TOKEN=${BOT_TOKEN}
+      - SESSION_STRING=${SESSION_STRING}
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+    restart: always
