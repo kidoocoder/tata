@@ -1,8 +1,8 @@
 {
       "name": "Telegram Music Bot",
       "description": "A bot to play music in Telegram voice chats",
-      "repository": "https://github.com/yourusername/your-repository",  // Replace with your actual GitHub repo URL
-      "logo": "https://example.com/logo.png",  // Optional, replace with a valid image URL
+      "repository": "https://github.com/kidoocoder/tata",
+      "logo": "https://files.catbox.moe/v3q694.jpg",
       "keywords": ["telegram", "music", "bot", "voice-chat", "pytgcalls"],
       "env": {
         "API_ID": {
