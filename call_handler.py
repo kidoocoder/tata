@@ -1,20 +1,44 @@
 from pytgcalls import PyTgCalls
-from pytgcalls.types.input_stream import InputStream
-from pytgcalls.types.input_stream.quality import HighQualityAudio
+from pytgcalls.types import Update
+from pytgcalls.types.stream import StreamAudioEnded
+from pytgcalls.types.input_stream import AudioPiped
+from pytgcalls.exceptions import AlreadyJoinedError
 
-# Initialize PyTgCalls with no client (will be assigned later in main.py)
-pytgcalls = PyTgCalls(client=None)
+from pyrogram import Client
+import asyncio
 
-# Function to join and play the audio in a voice chat
-async def join_and_play(chat_id: int, audio_path: str):
+# Create the PyTgCalls client using your main Pyrogram client
+pytgcalls = PyTgCalls(Client("user_session"))
+
+# A simple dictionary to track active group calls and queues (if needed)
+active_chats = {}
+
+@pytgcalls.on_stream_end()
+async def on_stream_end(client: PyTgCalls, update: StreamAudioEnded):
+    chat_id = update.chat_id
+    print(f"Stream ended in chat {chat_id}")
+    await pytgcalls.leave_group_call(chat_id)
+    if chat_id in active_chats:
+        del active_chats[chat_id]
+
+async def join_and_play(client, message, audio_path: str):
+    chat_id = message.chat.id
+
     try:
-        # Join the voice chat and play the audio
         await pytgcalls.join_group_call(
             chat_id,
-            InputStream(
-                audio_source=HighQualityAudio(audio_path)  # Using high-quality audio stream
-            ),
-            stream_type=None  # Type is None for basic audio stream
+            AudioPiped(audio_path),
         )
-    except Exception as e:
-        print(f"Error in joining group call or playing audio: {e}")
+        active_chats[chat_id] = audio_path
+        await message.reply_text("🎵 Playing now in voice chat.")
+    except AlreadyJoinedError:
+        await pytgcalls.change_stream(
+            chat_id,
+            AudioPiped(audio_path)
+        )
+        await message.reply_text("🎵 Stream changed successfully.")
+
+async def leave_call(chat_id: int):
+    if chat_id in active_chats:
+        await pytgcalls.leave_group_call(chat_id)
+        del active_chats[chat_id]
