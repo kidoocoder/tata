@@ -30,7 +30,7 @@
       "formation": {
         "worker": {
           "quantity": 1,
-          "size": "Basic"
+          "size": "Standard-1X"
         }
       },
       "scripts": {
